@@ -1,0 +1,34 @@
+{% extends 'shared/layout.html.twig' %}
+{% block body %}
+    <ul>
+        <li><a href="/admin/home">Ana Sayfa</a></li>
+        <li><a href="/admin/profile">Profil</a></li>
+        <li><a href="/ticket/search-form">Arama</a></li>
+        <li><a href="/admin/logout">Çıkış</a></li>
+    </ul>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Oluşturma</th>
+            <th>Son Değişiklik</th>
+            <th>Başlık</th>
+            <th>Önem</th>
+            <th>Kullanıcı</th>
+            <th>Kategori</th>
+            <th>Aç</th>
+        </tr>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.ticket_id }}</td>
+                <td>{{ ticket.create_date|date("Y-m-d H:i") }}</td>
+                <td>{{ ticket.modify_date|date("Y-m-d H:i") }}</td>
+                <td>{{ ticket.ticket_title }}</td>
+                <td>{{ ticket.priority }}</td>
+                <td>{{ ticket.status }}</td>
+                <td>{{ ticket.user_name }}</td>
+                <td>{{ ticket.category_name }}</td>
+                <td><a href="/ticket/reply-form/{{ ticket.ticket_id }}">Aç</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

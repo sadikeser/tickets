@@ -1,0 +1,18 @@
+{% extends 'shared/layout.html.twig' %}
+{% block body %}
+    <ul>
+        <li><a href="/admin/home">Ana Sayfa</a></li>
+        <li><a href="/admin/profile">Profil</a></li>
+        <li><a href="/ticket/search-form">Arama</a></li>
+        <li><a href="/admin/logout">Çıkış</a></li>
+    </ul>
+    <table>
+        <tr><th>Başlık : {{ ticket.ticket_title }}</th></tr>
+        <tr><th>Tarih : {{ ticket.create_date|date("Y-m-d H:i") }}</th></tr>
+        {% for comment in comments %}
+            <tr><td>{{ comment.comment_date|date("Y-m-d H:i") }} tarihinde {{ comment.user_name }} yazdı</td></tr>
+            <tr><td>{{ comment.comment_text }}</td></tr>
+        {% endfor %}
+    </table>
+    {{ form|raw }}
+{% endblock %}

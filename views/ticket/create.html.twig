@@ -1,0 +1,11 @@
+{% extends 'shared/layout.html.twig' %}
+{% block body %}
+    <ul>
+        <li><a href="/user/home">Ana Sayfa</a></li>
+        <li><a href="/user/profile">Profil</a></li>
+        <li><a href="/ticket/create-form">Yeni Oluştur</a></li>
+        <li><a href="/user/logout">Çıkış</a></li>
+    </ul>
+
+    {{ form|raw }}
+{% endblock %}
